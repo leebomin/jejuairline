@@ -1,0 +1,18 @@
+# 대용량 데이터 파일
+*.h5
+*.mat
+*.npy
+*.pkl
+
+# 저장 폴더
+/저장/
+/260626저장/
+/최종베이스라인/
+
+# Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# 시스템
+.DS_Store
