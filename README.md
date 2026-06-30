@@ -23,7 +23,7 @@
 ## 데이터셋
 
 NASA N-CMAPSS (New Commercial Modular Aero-Propulsion System Simulation)
-17. Turbofan Engine Degradation Simulation-2 선택하여 다운로드.
+- 17. Turbofan Engine Degradation Simulation-2 선택하여 다운로드.
 
 | 파일 | 엔진 수 | 비행 클래스 | 다운로드 |
 |-----|--------|-----------|--------|
