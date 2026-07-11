@@ -37,12 +37,14 @@
 ## 데이터셋
 
 NASA N-CMAPSS (New Commercial Modular Aero-Propulsion System Simulation)
+- (17) Turbofan Engine Degradation Simulation-2 선택하여 다운로드.
 
 | 파일 | 엔진 수 | 비행 클래스 | 다운로드 |
 |-----|--------|-----------|--------|
-| DS01-005.h5 | 5개 | 단/중/장거리 | [figshare](https://figshare.com/articles/dataset/N-CMAPSS_DS01-005_h5/14862577) |
-| DS02-006.h5 | 6개 | 장거리 | [figshare](https://figshare.com/articles/dataset/N-CMAPSS_DS02-006_h5/14862580) |
-| DS03-012.h5 | 12개 | 단/중/장거리 | [figshare](https://figshare.com/articles/dataset/N-CMAPSS_DS03-012_h5/14862586) |
+| DS01-005.h5 | 5개 | 단/중/장거리 | [nasa.gov](https://www.nasa.gov/intelligent-systems-division/discovery-and-systems-health/pcoe/pcoe-data-set-repository/) |
+| DS02-006.h5 | 6개 | 장거리 | [nasa.gov](https://www.nasa.gov/intelligent-systems-division/discovery-and-systems-health/pcoe/pcoe-data-set-repository/) |
+| DS03-012.h5 | 12개 | 단/중/장거리 | [nasa.gov](https://www.nasa.gov/intelligent-systems-division/discovery-and-systems-health/pcoe/pcoe-data-set-repository/) |
+
 
 > ⚠️ h5 파일은 용량이 커서 (파일당 약 3GB) 이 저장소에 포함되지 않습니다.
 > 위 링크에서 직접 다운로드 후 Google Drive에 업로드해서 사용하세요.
