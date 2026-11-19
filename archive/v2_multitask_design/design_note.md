@@ -1,10 +1,10 @@
 # v2 (내부 코드명 "v12") — 8단계 멀티태스크 파이프라인 설계 기록
 
-작성일: 2026-07-01
-관련 노트북: [`notebooks/260701_8stage_cap50.ipynb`](../notebooks/260701_8stage_cap50.ipynb), [`notebooks/260701_8stage_cap125.ipynb`](../notebooks/260701_8stage_cap125.ipynb)
-이전 버전: v1.1 (`notebooks/260630-v1_1.ipynb`)
+- 작성일: 2026-07-01
+- 관련 노트북: [`8stage_cap50.ipynb`](./8stage_cap50.ipynb), [`8stage_cap125.ipynb`](./8stage_cap125.ipynb)
+- 이전 버전: v1.1 ([`v1.1_partial_run.ipynb`](../v1.1-v1.2_leakage_fix/v1.1_partial_run.ipynb))
 
-> ⚠️ **실행 상태: 미실행.** 이 문서는 코드만 작성된 시점의 설계 기록이다. 아직 한 번도 돌리지 않았기 때문에 RMSE 등 실측 결과는 없다. 실행 후에는 이 문서에 "6. 실행 결과" 절을 채워 넣을 것.
+> **실행 상태: 미실행.** 이 문서는 코드만 작성된 시점의 설계 기록이다. 돌리지 않았기 때문에 RMSE 등 실측 결과는 없다. 실행 후에는 이 문서에 "6. 실행 결과" 절을 채워 넣을 예정.
 
 ---
 
@@ -35,7 +35,7 @@ v1.0 → v1.1까지는 "앙상블(GBM+RF+MLP) + CNN-LSTM을 따로 학습해서 
 
 ## 3. v1.1과의 구조 비교
 
-| 항목 | v1.1 (`260630-v1_1.ipynb`) | v2/v12 (`260701_8stage_*.ipynb`) |
+| 항목 | v1.1 (`v1.1_partial_run.ipynb`) | v2/v12 (`8stage_*.ipynb`) |
 |---|---|---|
 | 모델 수 | GBM + RF + MLP + CNN-LSTM (개별 학습 후 비교) | 멀티헤드 CNN 1개 (fold당 3개 시드 앙상블) |
 | 출력 | RUL 점 예측만 | RUL 평균+분산, 고장부위, 열화시작, 모듈별 열화량 — 4종 동시 |
@@ -50,7 +50,7 @@ v1.0 → v1.1까지는 "앙상블(GBM+RF+MLP) + CNN-LSTM을 따로 학습해서 
 
 두 노트북은 `CAP` 값(1개 상수)과 그에 딸린 저장 경로만 다르고 **나머지 코드는 완전히 동일**하다.
 
-| | `260701_8stage_cap50.ipynb` | `260701_8stage_cap125.ipynb` |
+| | `8stage_cap50.ipynb` | `8stage_cap125.ipynb` |
 |---|---|---|
 | `CAP` | 50 | 125 |
 | 체크포인트 폴더 | `v12_ckpt_cap50` | `v12_ckpt_cap125` |
@@ -72,7 +72,7 @@ FAULT_CLASS_WEIGHT=True(고장분류 붕괴 방지 스위치)
 
 ## 6. 실행 결과
 
-*(아직 실행 전. 실행 후 fold별 RMSE, 고장분류 정확도(3가지 방법 vs baseline 0.618), conformal 커버리지, CAP=50/125 비교를 이 절에 채워 넣을 것.)*
+*(아직 실행 전. 실행 후 fold별 RMSE, 고장분류 정확도(3가지 방법 vs baseline 0.618), conformal 커버리지, CAP=50/125 비교를 이 절에 채워 넣을 예정.)*
 
 ## 7. 실행 방법 요약
 

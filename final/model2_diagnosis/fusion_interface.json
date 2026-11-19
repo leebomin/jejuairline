@@ -1,0 +1,11 @@
+{
+  "model": "ngafid-surv-v1",
+  "horizon_days": 5,
+  "sensitivity": 0.9096,
+  "specificity": 0.5879,
+  "LR_pos": 2.21,
+  "LR_neg": 0.154,
+  "f1_threshold_mean": 0.4679,
+  "usage": "L1: alert=P(bin)>=thr → Tier B 게이팅 / L2: 사후오즈 = 사전오즈 × LR",
+  "caveat": "C172 일반항공 모집단 — 타 기종 적용 전 Se/Sp 재추정 필수"
+}

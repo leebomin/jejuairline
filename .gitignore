@@ -16,3 +16,6 @@ __pycache__/
 
 # 시스템
 .DS_Store
+# 비공개 제출 문서
+*.hwp
+*.pptx
