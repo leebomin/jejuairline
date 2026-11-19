@@ -24,10 +24,10 @@ warnings.filterwarnings('ignore')
 
 from google.colab import drive
 drive.mount('/content/drive')
-print("✅ 라이브러리 로드 완료")
+print("[OK] 라이브러리 로드 완료")
 
 # ================================================================
-# ★ 설정값 — 실험 결과 반영
+# 설정값 — 실험 결과 반영
 # ================================================================
 FOLDER   = '/content/drive/MyDrive/제주항공'
 SAVE_DIR = '/content/drive/MyDrive/제주항공/최종베이스라인'
@@ -40,17 +40,17 @@ FILES = [
 ]
 
 # 실험으로 확정된 최적 파라미터
-WINDOW         = 50      # ★ 실험 B: 50이 최적
+WINDOW         = 50      # 실험 B: 50이 최적
 MAX_RUL        = 125
 SENSOR_STD_MIN = 0.01
 FEATURE_RATIO  = 0.7
 N_ESTIMATORS   = 150
 STEP           = 10
 MAX_SAMPLES    = 30000
-LCC_WEIGHT     = 5       # ★ 실험 A: 5배가 최적
+LCC_WEIGHT     = 5       # 실험 A: 5배가 최적
 
 # CNN-LSTM 설정
-CNN_LAYERS     = 3       # ★ 3층 고정
+CNN_LAYERS     = 3       # 3층 고정
 CNN_EPOCHS     = 20
 CNN_BATCH_SIZE = 256
 CNN_LR         = 1e-3
@@ -267,14 +267,14 @@ results = {}   # 전체 결과 저장
 
 for filepath in FILES:
     if not os.path.exists(filepath):
-        print(f"\n⚠️  {filepath.split('/')[-1]} 없음, 건너뜀")
+        print(f"\n[주의] {filepath.split('/')[-1]} 없음, 건너뜀")
         continue
 
     ds_key = filepath.split('/')[-1].replace(
         'N-CMAPSS_', '').replace('.h5', '')
 
     print(f"\n{'═'*55}")
-    print(f"  📂  {ds_key}")
+    print(f"  {ds_key}")
     print(f"{'═'*55}")
 
     W, Xs, Y, units, fc = load_file(filepath)
@@ -288,12 +288,12 @@ for filepath in FILES:
 
         print(f"\n  ▶ {FC_LABELS.get(fc_type,'?')} | 엔진 {n_u}개", end="  ")
         if n_u < 2:
-            print("→ ⚠️ 엔진 부족"); continue
+            print("→ [주의] 엔진 부족"); continue
 
         F_sel, Xw, Yw, Uw = preprocess(
             W[mask], Xs[mask], Y[mask], units[mask])
         if F_sel is None:
-            print("→ ⚠️ 데이터 부족"); continue
+            print("→ [주의] 데이터 부족"); continue
 
         print(f"| 샘플 {len(Yw):,}개")
 
@@ -347,7 +347,7 @@ for filepath in FILES:
 # ================================================================
 # 시각화
 # ================================================================
-print("\n\n📊 그래프 그리는 중...")
+print("\n\n그래프 그리는 중...")
 
 labels = list(results.keys())
 n      = len(labels)
@@ -422,7 +422,7 @@ plt.show()
 # 요약 출력
 # ================================================================
 print("\n" + "━"*55)
-print("  📌 최종 베이스라인 요약")
+print("  최종 베이스라인 요약")
 print(f"     WINDOW={WINDOW} / LCC가중치={LCC_WEIGHT}배 / CNN {CNN_LAYERS}층")
 print("━"*55)
 
@@ -444,10 +444,10 @@ if e_vals and c_vals:
     print(f"\n  앙상블 전체 평균 RMSE:    {np.mean(e_vals):.2f}")
     print(f"  CNN-LSTM 전체 평균 RMSE:  {np.mean(c_vals):.2f}")
     if np.mean(e_vals) < np.mean(c_vals):
-        print(f"\n  ✅ 앙상블이 CNN-LSTM보다 평균 "
+        print(f"\n  [OK] 앙상블이 CNN-LSTM보다 평균 "
               f"{np.mean(c_vals)-np.mean(e_vals):.2f} 낮아요.")
     else:
-        print(f"\n  ✅ CNN-LSTM이 앙상블보다 평균 "
+        print(f"\n  [OK] CNN-LSTM이 앙상블보다 평균 "
               f"{np.mean(e_vals)-np.mean(c_vals):.2f} 낮아요.")
 
 # ================================================================
@@ -465,5 +465,5 @@ config = {
 with open(f'{SAVE_DIR}/config.pkl', 'wb') as f:
     pickle.dump(config, f)
 
-print(f"\n💾 결과 저장 완료: {SAVE_DIR}")
+print(f"\n[저장] 결과 저장 완료: {SAVE_DIR}")
 print("━"*55)

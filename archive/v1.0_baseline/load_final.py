@@ -44,13 +44,13 @@ CNN_LR         = config['CNN_LR']
 
 FC_LABELS = {1: '단거리', 2: '중거리', 3: '장거리'}
 FC_COLORS = {1: '#E87A5D', 2: '#F5B942', 3: '#4C8EDA'}
-print("✅ [1] 설정값 복원 완료")
+print("[OK] [1] 설정값 복원 완료")
 
 
 # ── 2. 실험 결과 복원 ──────────────────────────────────────────
 with open(f'{SAVE_DIR}/results.pkl', 'rb') as f:
     results = pickle.load(f)
-print(f"✅ [2] 실험 결과 복원 완료  ({len(results)}개 케이스)")
+print(f"[OK] [2] 실험 결과 복원 완료  ({len(results)}개 케이스)")
 
 
 # ── 3. 전처리 데이터 복원 ──────────────────────────────────────
@@ -58,7 +58,7 @@ with open(f'{SAVE_DIR}/all_data.pkl', 'rb') as f:
     all_data = pickle.load(f)
 with open(f'{SAVE_DIR}/all_models_meta.pkl', 'rb') as f:
     all_models_meta = pickle.load(f)
-print(f"✅ [3] 전처리 데이터 복원 완료  ({len(all_data)}개 케이스)")
+print(f"[OK] [3] 전처리 데이터 복원 완료  ({len(all_data)}개 케이스)")
 
 
 # ── 4. CNN-LSTM 클래스 정의 (모델 로드에 필요) ─────────────────
@@ -118,7 +118,7 @@ for label, meta in all_models_meta.items():
         loaded_models[label]['mlp_lcc'] = joblib.load(
             f'{SAVE_DIR}/mlp_lcc_{label}.pkl')
 
-print(f"✅ [4] 모델 복원 완료")
+print(f"[OK] [4] 모델 복원 완료")
 for label in loaded_models:
     has_lcc = '(LCC보정 포함)' if all_models_meta[label]['has_lcc'] else ''
     print(f"     {label}  앙상블+CNN-LSTM {has_lcc}")
@@ -245,7 +245,7 @@ def cross_val(F, Xw, Y, units, model_type='ensemble'):
         return None, []
     return float(np.mean(fold_rmses)), fold_rmses
 
-print("✅ [5] 공통 함수 정의 완료")
+print("[OK] [5] 공통 함수 정의 완료")
 
 
 # ── 7. 원본 데이터 복원 (다음 실험에 필요) ─────────────────────
@@ -262,12 +262,12 @@ fc_g    = A_g[:, 2].astype(int)
 ds_key  = last_file.split('/')[-1].replace(
     'N-CMAPSS_','').replace('.h5','')
 print(f"완료  ({ds_key}, {len(Y_g):,}개 시점)")
-print("✅ [6] 원본 데이터 복원 완료")
+print("[OK] [6] 원본 데이터 복원 완료")
 
 
 # ── 복원 완료 요약 ─────────────────────────────────────────────
 print("\n" + "━"*55)
-print("  🎉 전체 복원 완료!")
+print("  전체 복원 완료!")
 print("━"*55)
 
 print(f"\n  복원된 변수:")

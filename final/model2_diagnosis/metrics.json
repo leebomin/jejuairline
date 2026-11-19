@@ -1,0 +1,53 @@
+{
+  "model": "ngafid-surv-v1.1",
+  "protocol": "event",
+  "n_flights": 20207,
+  "n_events": 6968,
+  "rps_censored": 0.7722,
+  "auc_2d_pmf": 0.78,
+  "calibration": {
+    "P(t<=0d)": {
+      "pred": 0.058,
+      "emp": 0.081
+    },
+    "P(t<=1d)": {
+      "pred": 0.199,
+      "emp": 0.28
+    },
+    "P(t<=2d)": {
+      "pred": 0.339,
+      "emp": 0.404
+    },
+    "P(t<=3d)": {
+      "pred": 0.411,
+      "emp": 0.465
+    },
+    "P(t<=4d)": {
+      "pred": 0.446,
+      "emp": 0.498
+    }
+  },
+  "benchmark_acc": 0.762,
+  "benchmark_acc_ci90": [
+    0.757,
+    0.767
+  ],
+  "benchmark_auc": 0.849,
+  "acc_pmf_path": 0.722,
+  "fusion_interface": {
+    "model": "ngafid-surv-v1",
+    "horizon_days": 5,
+    "sensitivity": 0.9096,
+    "specificity": 0.5879,
+    "LR_pos": 2.21,
+    "LR_neg": 0.154,
+    "f1_threshold_mean": 0.4679,
+    "usage": "L1: alert=P(bin)>=thr → Tier B 게이팅 / L2: 사후오즈 = 사전오즈 × LR",
+    "caveat": "C172 일반항공 모집단 — 타 기종 적용 전 Se/Sp 재추정 필수"
+  },
+  "notes": [
+    "이벤트 그룹 교차(원 논문보다 엄격한 분할) — 발표수치와 직접 비교 시 명시",
+    "after=5일 내 무사건 가정(라벨 노이즈 캐비앗, 원 저자 인정)",
+    "same 비행 제외(NGAFID-MC 선례)"
+  ]
+}

@@ -38,13 +38,13 @@ config = {
 }
 with open(f'{SAVE_DIR}/config.pkl', 'wb') as f:
     pickle.dump(config, f)
-print("✅ [1] 설정값 저장 완료")
+print("[OK] [1] 설정값 저장 완료")
 
 
 # ── 2. 실험 결과(RMSE 숫자) 저장 ──────────────────────────────
 with open(f'{SAVE_DIR}/results.pkl', 'wb') as f:
     pickle.dump(results, f)
-print("✅ [2] 실험 결과 저장 완료")
+print("[OK] [2] 실험 결과 저장 완료")
 
 
 # ── 3. 데이터셋별 전처리 데이터 + 모델 저장 ───────────────────
@@ -62,7 +62,7 @@ for filepath in FILES:
 
     ds_key = filepath.split('/')[-1].replace(
         'N-CMAPSS_','').replace('.h5','')
-    print(f"\n  📂 {ds_key}")
+    print(f"\n  {ds_key}")
 
     with h5py.File(filepath, 'r') as f:
         W  = f['W_dev'][:]
@@ -137,12 +137,12 @@ with open(f'{SAVE_DIR}/all_data.pkl', 'wb') as f:
     pickle.dump(all_data, f)
 with open(f'{SAVE_DIR}/all_models_meta.pkl', 'wb') as f:
     pickle.dump(all_models, f)
-print(f"\n✅ [3] 전체 {len(all_data)}개 케이스 저장 완료")
+print(f"\n[OK] [3] 전체 {len(all_data)}개 케이스 저장 완료")
 
 
 # ── 4. 저장 목록 출력 ──────────────────────────────────────────
 print("\n" + "━"*50)
-print("  📁 저장된 파일 목록")
+print("  저장된 파일 목록")
 print("━"*50)
 total_mb = 0
 for fname in sorted(os.listdir(SAVE_DIR)):
@@ -151,5 +151,5 @@ for fname in sorted(os.listdir(SAVE_DIR)):
     print(f"  {fname:40s}  {mb:6.1f} MB")
 print("━"*50)
 print(f"  총 크기: {total_mb:.0f} MB")
-print("\n🎉 저장 완료!")
+print("\n저장 완료!")
 print("   내일 load_final.py 하나만 실행하면 이어서 시작할 수 있어요.")
